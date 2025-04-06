@@ -1,0 +1,1 @@
+{"manifest_version":3,"name":"Legal Lens AI","version":"1.0","description":"A Chrome extension that simplifies terms of service agreements","icons":{"16":"LegalLensAI.png","48":"LegalLensAI.png","128":"LegalLensAI.png"},"action":{"default_popup":"public/index.html","default_icon":{"16":"LegalLensAI.png","48":"LegalLensAI.png","128":"LegalLensAI.png"}}}
