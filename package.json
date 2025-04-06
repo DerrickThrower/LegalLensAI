@@ -1,7 +1,7 @@
 {
   "name": "diamondhacks2025",
   "version": "1.0.0",
-  "description": "this is Legal Lens Ai  the chrome extension that can simplify your terms of sevice so you dont need to sift through it all(we you would not anyway)",
+  "description": "this is Legal Lens Ai  the chrome extension that can simplify your terms of sevice so you dont need to sift through it all(we know you wouldnt read it anyway)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

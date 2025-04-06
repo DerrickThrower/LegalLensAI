@@ -33,11 +33,11 @@ export async function analyzeTermsOfService(text) {
   try {
     console.log('Requesting analysis from Gemini AI...');
     // Try different model name format that's supported in the current API version
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
     
     const prompt = `
       Please analyze the following Terms of Service text and provide:
-      1. A simplified summary (2-3 sentences) that explains the key points in plain and simplelanguage
+      1. A simplified summary (2-3 sentences) that explains the key points in plain language
       2. A list of potential concerns that a user should be aware of (e.g., privacy issues, cancelation policies, data sharing)
       
       Format the response as a JSON object with the following structure:
