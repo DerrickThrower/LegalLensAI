@@ -7,11 +7,9 @@ const Results = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   
-  // Get analysis results or use fallback data
   const { analysis, originalText } = location.state || {};
   
   useEffect(() => {
-    // Check if we have valid analysis data
     if (!analysis) {
       setError('No analysis data available');
     } else if (analysis.summary.startsWith('Error:') || analysis.summary.startsWith('An error occurred:')) {

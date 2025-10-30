@@ -3,12 +3,10 @@ const webpack = require('webpack');
 const dotenv = require('dotenv');
 const fs = require('fs');
 
-// Get the environment path
 const currentPath = path.join(__dirname);
 const envPath = currentPath + '/.env';
 const envExists = fs.existsSync(envPath);
 
-// Call dotenv config to load env vars
 let env = {};
 if (envExists) {
   console.log('.env file found, loading environment variables');
@@ -16,7 +14,6 @@ if (envExists) {
   env = parsedEnv || {};
 } else {
   console.log('.env file not found, using process.env');
-  // If .env doesn't exist, try to use process.env
   if (process.env.REACT_APP_GEMINI_API_KEY) {
     env.REACT_APP_GEMINI_API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
     console.log('Found REACT_APP_GEMINI_API_KEY in process.env');
@@ -25,13 +22,11 @@ if (envExists) {
   }
 }
 
-// Create a new object with process.env prefix
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
   return prev;
 }, {});
 
-// Log keys for debugging (without values for security)
 console.log('Environment keys loaded:', Object.keys(envKeys));
 
 module.exports = {

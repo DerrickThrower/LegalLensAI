@@ -11,7 +11,6 @@ const Analyzer = () => {
   const [error, setError] = useState('');
   const [apiKeyStatus, setApiKeyStatus] = useState('');
 
-  // Check API key on load
   useEffect(() => {
     const apiKey = config.GEMINI_API_KEY;
     if (!apiKey || apiKey === 'DEMO_KEY') {
@@ -22,7 +21,6 @@ const Analyzer = () => {
     }
   }, []);
 
-  // Restore previous text if coming back from results
   useEffect(() => {
     if (location.state?.previousText) {
       setInputText(location.state.previousText);

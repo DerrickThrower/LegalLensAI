@@ -4,7 +4,6 @@ import config from '../config';
 const API_KEY = config.GEMINI_API_KEY;
 console.log('API Key status:', API_KEY ? 'Key is present' : 'Key is missing');
 
-// Initialize the API client
 let genAI = null;
 try {
   genAI = new GoogleGenerativeAI(API_KEY);
@@ -13,7 +12,6 @@ try {
   console.error('Failed to initialize Gemini AI client:', error);
 }
 
-// Function to analyze terms of service text
 export async function analyzeTermsOfService(text) {
   if (!genAI) {
     console.error('Gemini AI client not initialized');
@@ -32,8 +30,7 @@ export async function analyzeTermsOfService(text) {
 
   try {
     console.log('Requesting analysis from Gemini AI...');
-    // Try different model name format that's supported in the current API version
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
     
     const prompt = `
       Please analyze the following Terms of Service text and provide:
@@ -55,7 +52,6 @@ export async function analyzeTermsOfService(text) {
       ${text.substring(0, 1500)}...
     `;
     
-    // Using the newer safety settings and generation config
     const generationConfig = {
       temperature: 0.4,
       topK: 32,
@@ -93,7 +89,6 @@ export async function analyzeTermsOfService(text) {
     console.log('Received response from Gemini AI');
     
     try {
-      // Extract JSON from response text
       const jsonMatch = textResponse.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         const parsedResult = JSON.parse(jsonMatch[0]);
@@ -101,7 +96,6 @@ export async function analyzeTermsOfService(text) {
         return parsedResult;
       }
       
-      // Fallback if JSON pattern not found
       console.error('Failed to extract JSON pattern from response');
       return {
         summary: textResponse.substring(0, 200) + "...",
